@@ -16,6 +16,7 @@ namespace BookStore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,11 +31,38 @@ namespace BookStore
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapDefaultControllerRoute();
             });
+
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("Hello from first Middleware \n");
+            //    await next();
+            //    await context.Response.WriteAsync("Hello from first Middleware-1 \n");
+            //});
+
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("Hello from second Middleware \n");
+            //});
+
+            //app.UseRouting();
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapGet("/", async context =>
+            //    {
+            //        await context.Response.WriteAsync("Hello World!");
+            //    });
+            //});
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.Map("/bhavan", async context =>
+            //     {
+            //         await context.Response.WriteAsync("Hello Bhavan");
+            //     });
+            //});
         }
     }
 }
